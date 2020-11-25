@@ -1,1 +1,1 @@
-# base-without-s6
+# docker-ubuntu-without-s6
