@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-MAINTAINER Gorka Lerchundi Osa <glertxundi@gmail.com>
 
 ##
 ## ROOTFS
