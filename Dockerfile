@@ -49,9 +49,6 @@ RUN dpkg-divert-min --local --rename --add /usr/bin/ischroot && \
 # install HTTPS support for APT.
 RUN apt-get-install-min apt-transport-https ca-certificates
 
-# install add-apt-repository
-RUN apt-get-install-min software-properties-common
-
 # upgrade all packages.
 RUN apt-get-min update                                  && \
     apt-get-min dist-upgrade -y --no-install-recommends && \
