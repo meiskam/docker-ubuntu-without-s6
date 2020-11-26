@@ -1,5 +1,5 @@
 #!/bin/sh
 
-exec apt-get install -y --no-install-recommends $@ && \
-     apt-get clean && \
-     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+apt-get-min update
+apt-get-min install -y --no-install-recommends $@
+apt-cleanup-min

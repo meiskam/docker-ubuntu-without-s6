@@ -32,8 +32,7 @@ ENV INITRD no
 
 # enable Ubuntu Universe and Multiverse.
 RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list   && \
-    sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list && \
-    apt-get-min update
+    sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
 
 # fix some issues with APT packages.
 # see https://github.com/dotcloud/docker/issues/1024
@@ -54,7 +53,9 @@ RUN apt-get-install-min apt-transport-https ca-certificates
 RUN apt-get-install-min software-properties-common
 
 # upgrade all packages.
-RUN apt-get-min dist-upgrade -y --no-install-recommends
+RUN apt-get-min update                                  && \
+    apt-get-min dist-upgrade -y --no-install-recommends && \
+    apt-cleanup-min
 
 # fix locale.
 ENV LANG en_US.UTF-8
